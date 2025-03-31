@@ -11,7 +11,7 @@ const Header = () => {
       <div className='h=full container mx-auto flex items-center px=4 justify-between'>
             <div className=''>
               <Link to={"/"}>
-               <Logo w={90} h={50}/>
+                <Logo w={90} h={50}/>
               </Link>
             </div>
 
@@ -35,7 +35,7 @@ const Header = () => {
               </div>
 
               <div>
-                <button className='px-3 py-1 rounded-full text-white bg-red-600 hover:bg-red-700'>Login</button>
+                <Link to={"/login"} className='px-3 py-1 rounded-full text-white bg-red-600 hover:bg-red-700'>Login</Link>
               </div>
 
               {/* <div>
