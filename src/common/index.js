@@ -1,3 +1,5 @@
+import AdminPanel from "../pages/AdminPanel";
+
 const backendDomain = "http://localhost:8080";
 
 const SummaryApi = {
@@ -16,6 +18,10 @@ const SummaryApi = {
     logout_user : {
         url : `${backendDomain}/api/userLogout`,
         method : 'get'
+    },
+    allUser : {
+        url: `${backendDomain}/api/all-user`,
+        method: "get",
     }
 }
 

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { FaRegCircleUser } from "react-icons/fa6";
+import { FaRegUserCircle } from "react-icons/fa";
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import ROLE from '../common/role';
 
@@ -25,7 +25,7 @@ const AdminPanel = () => {
                         user?.profilePic ? (
                             <img src={user?.profilePic} className='w-20 h-20 rounded-full' alt={user?.name} />
                         ) : (
-                            <FaRegCircleUser/>
+                            <FaRegUserCircle/>
                         )
                         }
                     </div>
