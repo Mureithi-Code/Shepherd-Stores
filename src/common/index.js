@@ -1,5 +1,3 @@
-import AdminPanel from "../pages/AdminPanel";
-
 const backendDomain = "http://localhost:8080";
 
 const SummaryApi = {
@@ -22,6 +20,10 @@ const SummaryApi = {
     allUser : {
         url: `${backendDomain}/api/all-user`,
         method: "get",
+    },
+    updateUser : {
+        url : `${backendDomain}/api/update-user`,
+        method : "post"
     }
 }
 
