@@ -106,15 +106,15 @@ const Header = () => {
                 </div>
 
                   {
-                     //user?._id && (
+                     user?._id && (
                       <Link to={"/cart"} className='text-2xl relative'>
                           <span><IoCartOutline/></span>
       
                           <div className='bg-red-600 text-white w-5 h-5 rounded-full p-1 flex items-center justify-center absolute -top-2 -right-3'>
-                              <p className='text-sm'>{context?.cartProductCount || 0}</p>
+                              <p className='text-sm'>{context?.cartProductCount}</p>
                           </div>
                       </Link>
-                     // )
+                      )
                   }
               
 
