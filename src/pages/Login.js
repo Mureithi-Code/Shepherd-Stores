@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import loginIcons from '../assest/signin.gif'
+import LoginGif from "../asset/gifs/LoginGif.mp4";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
@@ -60,10 +60,12 @@ const Login = () => {
         <div className='mx-auto container p-4'>
 
             <div className='bg-white p-5 w-full max-w-sm mx-auto'>
-                    <div className='w-20 h-20 mx-auto'>
-                        <img src={loginIcons} alt='login icons'/>
-                    </div>
-
+                <div className='w-20 h-20 mx-auto'>
+                    <video autoPlay loop muted className="w-full h-full object-contain">
+                        <source src={LoginGif} type="video/mp4" />
+                        Welcome back🤝.
+                    </video>
+                </div>
                     <form className='pt-6 flex flex-col gap-2' onSubmit={handleSubmit}>
                         <div className='grid'>
                             <label>Email : </label>
