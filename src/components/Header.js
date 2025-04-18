@@ -123,7 +123,7 @@ const Header = () => {
             </div>
 
 
-            <div className='flex items-center gap-7'>
+            <div className='flex items-center gap-3'>
                 
                 <div className='relative flex justify-center'>
 
@@ -176,10 +176,10 @@ const Header = () => {
                 <div>
                   {
                     user?._id  ? (
-                      <button onClick={handleLogout} className='px-3 py-1 rounded-full text-white bg-red-600 hover:bg-red-700'>Logout</button>
+                      <button onClick={handleLogout} className='px-3 py-1 rounded-full text-white bg-red-600 hover:bg-red-700 transition-transform duration-200 scale-90'>Logout</button>
                     )
                     : (
-                    <Link to={"/login"} className='px-3 py-1 rounded-full text-white bg-red-600 hover:bg-red-700'>Login</Link>
+                    <Link to={"/login"} className='px-3 py-1 rounded-full text-white bg-red-600 hover:bg-red-700 transition-transform duration-200 scale-90'>Login</Link>
                     )
                   }
                     

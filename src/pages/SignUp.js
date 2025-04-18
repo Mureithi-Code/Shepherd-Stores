@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { MdLogin } from "react-icons/md";
+import signin from "../asset/gifs/signin.gif";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
@@ -83,7 +83,7 @@ const SignUp = () => {
 
                     <div className='w-20 h-20 mx-auto relative overflow-hidden rounded-full'>
                         <div>
-                            <img src={data.profilePic || MdLogin} alt='login icons'/>
+                            <img src={data.profilePic || signin} alt='login icons'/>
                         </div>
                         <form>
                           <label>
