@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect, useRef } from 'react'
 import Logo from './Logo'
 import { MdOutlineManageSearch } from "react-icons/md";
 import { FaRegUserCircle } from "react-icons/fa";
@@ -10,6 +10,7 @@ import { toast } from 'react-toastify'
 import { setUserDetails } from '../store/userSlice';
 import ROLE from '../common/role';
 import Context from '../context';
+import { motion, AnimatePresence } from 'framer-motion'
 
 const Header = () => {
   const user = useSelector(state => state?.user?.user)
@@ -21,6 +22,7 @@ const Header = () => {
   const URLSearch = new URLSearchParams(searchInput?.search)
   const searchQuery = URLSearch.getAll("q")
   const [search,setSearch] = useState(searchQuery)
+  const [showMobileSearch, setShowMobileSearch] = useState(false)
 
   const handleLogout = async() => {
     const fetchData = await fetch(SummaryApi.logout_user.url,{
@@ -52,6 +54,25 @@ const Header = () => {
       navigate("/search")
     }
   }
+
+  const mobileSearchRef = useRef()
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (mobileSearchRef.current && !mobileSearchRef.current.contains(e.target)) {
+        setShowMobileSearch(false)
+      }
+    }
+
+    if (showMobileSearch) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [showMobileSearch])
+
   return (
     <header className='h-16 shadow-md bg-white fixed w-full z-40'>
       <div className=' h-full container mx-auto flex items-center px-4 justify-between'>
@@ -61,6 +82,39 @@ const Header = () => {
                 </Link>
             </div>
 
+            {/* Mobile Search Toggle Button */}
+            <div className='flex items-center lg:hidden gap-2'>
+              <button
+                className='text-2xl text-red-600'
+                onClick={() => setShowMobileSearch(prev => !prev)}
+              >
+                <MdOutlineManageSearch />
+              </button>
+            </div>
+
+            {/* Mobile Search Animated Dropdown */}
+            <AnimatePresence>
+              {showMobileSearch && (
+                <motion.div
+                  ref={mobileSearchRef}
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className='absolute top-16 left-0 w-full bg-white p-3 shadow-md lg:hidden z-50'
+                >
+                  <input
+                    type='text'
+                    placeholder='Search product here...'
+                    className='w-full outline-none border rounded-full px-3 py-2 focus:ring-2 focus:ring-red-500'
+                    value={search}
+                    onChange={handleSearch}
+                    autoFocus
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
+            
             <div className='hidden lg:flex items-center w-full justify-between max-w-sm border rounded-full focus-within:shadow pl-2'>
                 <input type='text' placeholder='search product here...' className='w-full outline-none' onChange={handleSearch} value={search}/>
                 <div className='text-lg min-w-[50px] h-8 bg-red-600 flex items-center justify-center rounded-r-full text-white'>
