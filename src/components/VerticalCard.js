@@ -44,12 +44,17 @@ const VerticalCard = ({loading,data = []}) => {
                              <img src={product?.productImage[0]} className='object-scale-down h-full hover:scale-110 transition-all mix-blend-multiply'/>
                          </div>
                          <div className='p-4 grid gap-3'>
-                             <h2 className='font-medium text-base md:text-lg text-ellipsis line-clamp-1 text-black'>{product?.productName}</h2>
-                             <p className='capitalize text-slate-500'>{product?.category}</p>
-                             <div className='flex gap-3'>
-                                 <p className='text-red-600 font-medium'>{ displayKESCurrency(product?.sellingPrice) }</p>
-                                 <p className='text-slate-500 line-through'>{ displayKESCurrency(product?.price)  }</p>
-                             </div>
+                             <h2 className='font-medium text-base md:text-lg text-ellipsis line-clamp-1 text-black overflow-hidden whitespace-nowrap'>{product?.productName}</h2>
+                             <p className='capitalize text-slate-500 text-sm truncate'>{product?.category}</p>
+                             <div className='flex items-center justify-between gap-2 overflow-hidden'>
+                                <p className='text-red-600 font-medium text-[clamp(0.85rem,2.5vw,1rem)] max-w-[6.5rem] sm:max-w-[8rem] md:max-w-[10rem] overflow-hidden whitespace-nowrap text-ellipsis'>
+                                    {displayKESCurrency(product?.sellingPrice)}
+                                </p>
+                                <p className='text-slate-500 font-medium line-through text-[clamp(0.75rem,2.5vw,0.95rem)] max-w-[6rem] sm:max-w-[7rem] md:max-w-[8rem] overflow-hidden whitespace-nowrap text-ellipsis text-right'>
+                                    {displayKESCurrency(product?.price)}
+                                </p>
+                              </div>
+
                              <button className='text-sm bg-red-600 hover:bg-red-700 text-white px-3 py-0.5 rounded-full' onClick={(e)=>handleAddToCart(e,product?._id)}>Add to Cart</button>
                          </div>
                      </Link>

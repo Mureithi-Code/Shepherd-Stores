@@ -75,18 +75,45 @@ const HorizontalCardProduct = ({category, heading}) => {
            ) : (
             data.map((product,index)=>{
                 return(
-                    <Link to={"product/"+product?._id} className='w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] h-36 bg-white rounded-sm shadow flex'>
-                        <div className='bg-slate-200 h-full p-4 min-w-[120px] md:min-w-[145px]'>
-                            <img src={product.productImage[0]} className='object-scale-down h-full hover:scale-110 transition-all'/>
+                    <Link
+                        to={"product/" + product?._id}
+                        key={product?._id}
+                        className="w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] h-36 bg-white rounded-sm shadow flex overflow-hidden"
+                        >
+                        {/* Image */}
+                        <div className="bg-slate-200 h-full p-4 min-w-[120px] md:min-w-[145px] flex justify-center items-center overflow-hidden">
+                            <img
+                            src={product?.productImage[0]}
+                            alt={product?.productName}
+                            className="object-scale-down h-full hover:scale-110 transition-all mix-blend-multiply"
+                            />
                         </div>
-                        <div className='p-4 grid'>
-                            <h2 className='font-medium text-base md:text-lg text-ellipsis line-clamp-1 text-black'>{product?.productName}</h2>
-                            <p className='capitalize text-slate-500'>{product?.category}</p>
-                            <div className='flex gap-3'>
-                                <p className='text-red-600 font-medium'>{ displayKESCurrency(product?.sellingPrice) }</p>
-                                <p className='text-slate-500 line-through'>{ displayKESCurrency(product?.price)  }</p>
+
+                        {/* Content */}
+                        <div className="p-4 grid gap-1 w-full overflow-hidden">
+                            <h2 className="font-medium text-sm md:text-base text-black truncate">
+                                {product?.productName}
+                            </h2>
+                            <p className="capitalize text-slate-500 text-xs truncate">
+                                {product?.category}
+                            </p>
+                            <div className="flex items-center justify-between gap-2 flex-wrap">
+                                <p className="text-red-600 font-medium text-[clamp(0.75rem,2.5vw,0.95rem)] break-words">
+                                    {displayKESCurrency(product?.sellingPrice)}
+                                </p>
+                                <p className="text-slate-500 line-through font-medium text-[clamp(0.7rem,2.5vw,0.9rem)] text-right break-words">
+                                    {displayKESCurrency(product?.price)}
+                                </p>
                             </div>
-                            <button className='text-sm bg-red-600 hover:bg-red-700 text-white px-3 py-0.5 rounded-full' onClick={(e)=>handleAddToCart(e,product?._id)}>Add to Cart</button>
+                            <button
+                                className="text-xs bg-red-600 hover:bg-red-700 text-white px-3 py-0.5 rounded-full w-fit"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    handleAddToCart(e, product?._id);
+                                }}
+                                >
+                                Add to Cart
+                            </button>
                         </div>
                     </Link>
                 )
