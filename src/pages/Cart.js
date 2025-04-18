@@ -156,7 +156,7 @@ const Cart = () => {
 
                             {/* Details */}
                             <div className="px-3 py-2 relative flex flex-col justify-between overflow-hidden">
-                                {/* Delete icon */}
+                                {/* Delete Product */}
                                 <div
                                 className="absolute top-0 right-0 text-red-600 rounded-full p-2 hover:bg-red-600 hover:text-white cursor-pointer"
                                 onClick={() => deleteCartProduct(product?._id)}
