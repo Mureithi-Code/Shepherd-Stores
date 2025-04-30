@@ -90,14 +90,14 @@ const HorizontalCardProduct = ({category, heading}) => {
                         </div>
 
                         {/* Content */}
-                        <div className="p-4 grid gap-1 w-full overflow-hidden">
+                        <div className="p-3 grid gap-1 w-full overflow-hidden">
                             <h2 className="font-medium text-sm md:text-base text-black truncate">
                                 {product?.productName}
                             </h2>
                             <p className="capitalize text-slate-500 text-xs truncate">
                                 {product?.category}
                             </p>
-                            <div className="flex items-center justify-between gap-2 flex-wrap">
+                            <div className="flex items-center justify-between gap-0.5 flex-wrap">
                                 <p className="text-red-600 font-medium text-[clamp(0.75rem,2.5vw,0.95rem)] break-words">
                                     {displayKESCurrency(product?.sellingPrice)}
                                 </p>
