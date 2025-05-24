@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { MdModeEditOutline } from "react-icons/md";
 import AdminEditProduct from './AdminEditProduct';
 import displayKESCurrency from '../helpers/displayCurrency';
+import AdminDeleteProductButton from './AdminDeleteProductButton';
 
 const AdminProductCard = ({
     data,
@@ -30,10 +31,14 @@ const AdminProductCard = ({
                     <MdModeEditOutline/>
                 </div>
 
+                
+
             </div>
 
           
        </div>
+
+        <AdminDeleteProductButton productId={data._id} fetchdata={fetchdata} /> 
         
         {
           editProduct && (

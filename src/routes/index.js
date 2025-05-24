@@ -60,6 +60,10 @@ const router = createBrowserRouter([
                     {
                         path : "all-products",
                         element : <AllProducts/>
+                    },
+                    {
+                        path : "delete-product",
+                        element : <AllProducts/>
                     }
                 ]
             },

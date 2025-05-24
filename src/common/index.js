@@ -76,6 +76,10 @@ const SummaryApi = {
     filterProduct : {
         url : `${backendDomain}/api/filter-product`,
         method : "post"
+    },
+    deleteProduct : {
+        url : `${backendDomain}/api/delete-product`,
+        method : "post"
     }
 }
 
