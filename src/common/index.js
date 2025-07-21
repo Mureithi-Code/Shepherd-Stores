@@ -1,6 +1,6 @@
 const backendDomain = process.env.NODE_ENV === "development"
   ? "http://localhost:8080"
-  : "https://shepherd-stores-backend.vercel.app";
+  : "https://shepherd-stores-backend.onrender.com";
 
 const SummaryApi = {
     signUP : {
