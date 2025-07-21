@@ -8,12 +8,18 @@ const CategoryList = () => {
 
     const categoryLoading = new Array(13).fill(null)
 
-    const fetchCategoryProduct = async() =>{
-        setLoading(true)
-        const response = await fetch(SummaryApi.categoryProduct.url)
-        const dataResponse = await response.json()
-        setLoading(false)
-        setCategoryProduct(dataResponse.data)
+    const fetchCategoryProduct = async () => {
+        try {
+            setLoading(true)
+            const response = await fetch(SummaryApi.categoryProduct.url)
+            const dataResponse = await response.json()
+            setCategoryProduct(Array.isArray(dataResponse.data) ? dataResponse.data : [])
+        } catch (error) {
+            console.error("Failed to fetch category products:", error)
+            setCategoryProduct([]) // fallback
+        } finally {
+            setLoading(false)
+        }
     }
 
     useEffect(()=>{
