@@ -34,9 +34,13 @@ const HorizontalCardProduct = ({category, heading}) => {
         setData(validData)
     }
 
-    useEffect(()=>{
-        if (category) fetchData()
-    }, [category])
+    useEffect(() => {
+        if (category) {
+            fetchData()
+        } else {
+            console.warn("❗ category is missing for fetchCategoryWiseProduct")
+        }
+        }, [category])
 
     const scrollRight = () =>{
         scrollElement.current.scrollLeft -= 300
