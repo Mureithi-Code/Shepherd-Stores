@@ -30,7 +30,7 @@ const HorizontalCardProduct = ({category, heading}) => {
         const validData = Array.isArray(categoryProduct?.data)
         ? categoryProduct.data.filter(p => Array.isArray(p.productImage) && p.productImage.length > 0)
         : [];
-        console.log("Fetched data:", categoryProduct);
+        console.log("Fetched data:", categoryProduct)
         setData(validData)
     }
 
