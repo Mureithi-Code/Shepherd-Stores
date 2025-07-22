@@ -35,8 +35,8 @@ const HorizontalCardProduct = ({category, heading}) => {
     }
 
     useEffect(()=>{
-        fetchData()
-    },[])
+        if (category) fetchData()
+    }, [category])
 
     const scrollRight = () =>{
         scrollElement.current.scrollLeft -= 300
