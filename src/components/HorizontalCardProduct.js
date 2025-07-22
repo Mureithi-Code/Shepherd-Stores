@@ -27,7 +27,11 @@ const HorizontalCardProduct = ({category, heading}) => {
         const categoryProduct = await fetchCategoryWiseProduct(category)
         setLoading(false)
 
-        setData(categoryProduct?.data)
+        const validData = Array.isArray(categoryProduct?.data)
+        ? categoryProduct.data.filter(p => Array.isArray(p.productImage) && p.productImage.length > 0)
+        : [];
+        console.log("Fetched data:", categoryProduct);
+        setData(validData)
     }
 
     useEffect(()=>{
@@ -73,6 +77,7 @@ const HorizontalCardProduct = ({category, heading}) => {
                     )
                 })
            ) : (
+            Array.isArray(data) &&
             data.map((product,index)=>{
                 return(
                     <Link
