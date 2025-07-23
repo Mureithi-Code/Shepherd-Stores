@@ -1,6 +1,7 @@
 const { default: SummaryApi } = require("../common")
 
 const fetchCategoryWiseProduct = async(category)=>{
+    console.log("📦 Sending category:", category)
     const response = await fetch(SummaryApi.categoryWiseProduct.url,{
         method : SummaryApi.categoryWiseProduct.method,
         headers : {
